@@ -1,15 +1,27 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+        
+        letter_count_s = {}
+        letter_count_t = {}
 
-        return self.track_letters(s) == self.track_letters(t)
-
-    def track_letters(self, s: str) -> dict:
-        letters = {}
-        for char in s:
-            if char in letters:
-                letters[char] += 1
+        for i in s:
+            if i in letter_count_s:
+                letter_count_s[i] += 1
             else:
-                letters[char] = 1
-        return letters
+                letter_count_s[i] = 1
+
+        for j in t:
+            if j in letter_count_t:
+                letter_count_t[j] += 1
+            else:
+                letter_count_t[j] = 1  
+
+        return letter_count_t == letter_count_s                  
+
+        #create a hashmap to keep track of the letters and the occurences
+        #loop string
+            #if the letter is not in the hashmap add it and set val to 1
+            #if it is then add 1 to its existing value
+
+        #repeat this for the other string (maybe a helper function)
+                #check for equality
