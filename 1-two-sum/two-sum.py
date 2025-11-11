@@ -1,9 +1,17 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        table = {}
-        for i in range(len(nums)):
-            complement = target - nums[i]
-            if complement in table:
-                return [i, table[complement]]
+        
+        store = {}
+
+        for index, num in enumerate(nums):
+            diff = target - num
+            if diff in store:
+                return [store[diff], index]
             else:
-                table[nums[i]] = i
+                store[num] = index    
+
+        #store the items in a hashmap.
+        #loop array using enumerate
+            #set diff as target - array item
+            #if the target is in the hashmap return the index's of both
+            #if it is not then add that item to the hashmap
